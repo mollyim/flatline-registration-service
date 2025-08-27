@@ -32,6 +32,9 @@
 
     <!-- eclipse-temurin:21-jre-jammy (note: always use the multi-arch manifest *LIST* here); see https://hub.docker.com/_/eclipse-temurin -->
     <docker.image.sha256>02fc89fa8766a9ba221e69225f8d1c10bb91885ddbd3c112448e23488ba40ab6</docker.image.sha256>
+
+    <!-- FLT(uoemai): Default to storing container image locally. Use "build" to push to a registry. -->
+    <jib.goal>dockerBuild</jib.goal>
   </properties>
 
   <repositories>
@@ -506,6 +509,16 @@
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
         <version>${jib-maven-plugin.version}</version>
+        <!-- FLT(uoemai): Create container image when packaging. -->
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <!-- FLT(uoemai): Allow customizing container image storage. -->
+	            <goal>${jib.goal}</goal>
+                </goals>
+            </execution>
+        </executions>
         <configuration>
           <from>
             <image>eclipse-temurin@sha256:${docker.image.sha256}</image>
@@ -514,8 +527,11 @@
           <container>
             <jvmFlags>
               <jvmFlag>-XX:MaxRAMPercentage=75</jvmFlag>
+              <!-- FLT(uoemai): Run the service in development mode. -->
+              <jvmFlag>-Dmicronaut.environments=dev</jvmFlag>
             </jvmFlags>
-
+            <!-- FLT(uoemai): Timestamp container image. -->
+            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
             <!-- Because we have two executable classes (the service itself and the CLI), we need to specify which
             should be the entrypoint for Docker images -->
             <mainClass>org.signal.registration.Application</mainClass>
