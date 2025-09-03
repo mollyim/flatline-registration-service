@@ -1,8 +1,10 @@
 name: Release
 
-on:
-  release:
-    types: [published]
+# FLT(uoemai): Workflows run in the platform repository.
+# on:
+#   release:
+#     types: [published]
+on: workflow_dispatch
 
 jobs:
   push-to-staging:
