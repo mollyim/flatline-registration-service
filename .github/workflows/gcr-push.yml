@@ -1,19 +1,17 @@
 name: Build and push Docker image to GCR
 
-# FLT(uoemai): Workflows run in the platform repository.
-# on:
-#   workflow_call:
-#     inputs:
-#       registry_login_server:
-#         required: true
-#         type: string
-#       workload_identity_provider:
-#         required: true
-#         type: string
-#       service_account:
-#         required: true
-#         type: string
-on: workflow_dispatch
+on:
+  workflow_call:
+    inputs:
+      registry_login_server:
+        required: true
+        type: string
+      workload_identity_provider:
+        required: true
+        type: string
+      service_account:
+        required: true
+        type: string
 
 jobs:
   build-and-push:
