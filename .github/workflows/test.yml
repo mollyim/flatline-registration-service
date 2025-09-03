@@ -1,8 +1,6 @@
 name: Java CI
 
-# FLT(uoemai): Workflows run in the platform repository.
-# on: [push, pull_request]
-on: workflow_dispatch
+on: [push, pull_request]
 
 jobs:
   build:
