@@ -10,6 +10,8 @@
     </encoder>
   </appender>
 
+  <appender name="OTEL" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender"/>
+
   <appender name="JSON_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
     <destination>intake.logs.datadoghq.com:10516</destination>
     <keepAliveDuration>20 seconds</keepAliveDuration>
@@ -29,5 +31,6 @@
   <root level="info">
     <appender-ref ref="STDOUT"/>
     <appender-ref ref="JSON_TCP"/>
+    <appender-ref ref="OTEL"/>
   </root>
 </configuration>
