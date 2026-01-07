@@ -15,7 +15,7 @@
   <parent>
     <groupId>io.micronaut.platform</groupId>
     <artifactId>micronaut-parent</artifactId>
-    <version>4.8.3</version>
+    <version>4.10.6</version>
   </parent>
 
   <properties>
@@ -28,7 +28,7 @@
     <!-- See https://console.cloud.google.com/artifacts/docker/google.com:cloudsdktool/us/gcr.io/google-cloud-cli -->
     <firestore.emulator.version>526.0.1-emulators</firestore.emulator.version>
     <simple-grpc.version>0.1.0</simple-grpc.version>
-    <testcontainers.version>1.21.2</testcontainers.version>
+    <testcontainers.version>1.21.4</testcontainers.version>
 
     <!-- This overrides the grpc version in the micronaut-parent pom we inherit from. Micronaut 4.8.3 uses gRPC 1.69.1
     which is runtime incompatible with google-cloud which brings in 1.71.0 libraries. Micronaut 4.9.0 uses an updated
@@ -53,7 +53,7 @@
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>libraries-bom</artifactId>
-        <version>26.68.0</version>
+        <version>26.73.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -135,7 +135,7 @@
     <dependency>
       <groupId>com.googlecode.libphonenumber</groupId>
       <artifactId>libphonenumber</artifactId>
-      <version>9.0.14</version>
+      <version>9.0.21</version>
     </dependency>
 
     <dependency>
@@ -157,7 +157,7 @@
       <artifactId>infobip-api-java-client</artifactId>
       <!-- Do not upgrade. 5.x and above uses a "send SMS" API that does not return synchronous error responses,
       and our current registration flow depends on synchronous error reporting by message providers. -->
-      <version>4.3.1</version>
+      <version>4.4.0</version>
     </dependency>
 
     <dependency>
@@ -206,7 +206,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.20.0</version>
+      <version>2.21.0</version>
     </dependency>
 
     <!-- Compensate for transitive dependencies knocked out by Twilio's exclusions -->
@@ -318,7 +318,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.18.0</version>
+      <version>3.20.0</version>
     </dependency>
 
     <dependency>
@@ -350,7 +350,7 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.19.0</version>
+      <version>1.20.0</version>
     </dependency>
 
     <!-- required for YAML configuration files in Micronaut 4 -->
@@ -368,7 +368,7 @@
     <dependency>
       <groupId>com.sinch.sdk</groupId>
       <artifactId>sinch-sdk-java</artifactId>
-      <version>1.7.0</version>
+      <version>1.7.1</version>
     </dependency>
 
     <!-- Test dependencies -->
@@ -529,7 +529,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.6.2</version>
 
         <executions>
           <execution>
