@@ -98,6 +98,14 @@
     <dependency>
       <groupId>io.micronaut.tracing</groupId>
       <artifactId>micronaut-tracing-opentelemetry-http</artifactId>
+
+      <exclusions>
+        <!-- Conflicts with pretty much everything in com.google.cloud:* -->
+        <exclusion>
+          <groupId>org.checkerframework</groupId>
+          <artifactId>checker-qual</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
@@ -158,6 +166,14 @@
       <!-- Do not upgrade. 5.x and above uses a "send SMS" API that does not return synchronous error responses,
       and our current registration flow depends on synchronous error reporting by message providers. -->
       <version>4.4.0</version>
+
+      <exclusions>
+        <!-- Conflicts with opentelemetry-exporter-otlp, which has a newer version -->
+        <exclusion>
+          <groupId>com.squareup.okio</groupId>
+          <artifactId>okio-jvm</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -228,13 +244,18 @@
       <exclusions>
         <!-- Conflicts with pretty much everything in com.google.cloud:*, which has a newer version -->
         <exclusion>
-          <groupId>org.checkerframework</groupId>
-          <artifactId>checker-qual</artifactId>
+          <groupId>com.google.errorprone</groupId>
+          <artifactId>error_prone_annotations</artifactId>
         </exclusion>
 
         <exclusion>
-          <groupId>com.google.errorprone</groupId>
-          <artifactId>error_prone_annotations</artifactId>
+          <groupId>com.google.guava</groupId>
+          <artifactId>failureaccess</artifactId>
+        </exclusion>
+
+        <exclusion>
+          <groupId>com.google.j2objc</groupId>
+          <artifactId>j2objc-annotations</artifactId>
         </exclusion>
 
         <exclusion>
@@ -331,6 +352,19 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
       <version>1.14.1</version>
+
+      <exclusions>
+        <!-- conflicts with com.google.cloud:* which has a newer version -->
+        <exclusion>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+        </exclusion>
+
+        <exclusion>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
