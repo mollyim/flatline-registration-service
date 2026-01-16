@@ -98,12 +98,12 @@ class GcpPubSubAttemptAnalyzedEventListener implements ApplicationEventListener<
     event.attemptAnalysis().mcc().ifPresent(pubSubMessageBuilder::setSenderMcc);
     event.attemptAnalysis().mnc().ifPresent(pubSubMessageBuilder::setSenderMnc);
 
-    if (StringUtils.isNotBlank(event.attemptPendingAnalysis().getClientMcc())) {
-      pubSubMessageBuilder.setClientSimMcc(event.attemptPendingAnalysis().getClientMcc());
+    if (StringUtils.isNotBlank(event.attemptPendingAnalysis().getLookupMcc())) {
+      pubSubMessageBuilder.setLookupMcc(event.attemptPendingAnalysis().getLookupMcc());
     }
 
-    if (StringUtils.isNotBlank(event.attemptPendingAnalysis().getClientMnc())) {
-      pubSubMessageBuilder.setClientSimMnc(event.attemptPendingAnalysis().getClientMnc());
+    if (StringUtils.isNotBlank(event.attemptPendingAnalysis().getLookupMnc())) {
+      pubSubMessageBuilder.setLookupMnc(event.attemptPendingAnalysis().getLookupMnc());
     }
 
     return pubSubMessageBuilder.build();
