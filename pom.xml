@@ -26,7 +26,7 @@
     <exec.mainClass>org.signal.registration.Application</exec.mainClass>
 
     <!-- See https://console.cloud.google.com/artifacts/docker/google.com:cloudsdktool/us/gcr.io/google-cloud-cli -->
-    <firestore.emulator.version>526.0.1-emulators</firestore.emulator.version>
+    <gcloud.emulator.version>557.0.0-emulators</gcloud.emulator.version>
     <simple-grpc.version>0.1.0</simple-grpc.version>
     <testcontainers.version>1.21.4</testcontainers.version>
 
@@ -601,7 +601,7 @@
 
         <configuration>
           <systemPropertyVariables combine.children="append">
-            <firestore.emulator.version>${firestore.emulator.version}</firestore.emulator.version>
+            <gcloud.emulator.version>${gcloud.emulator.version}</gcloud.emulator.version>
           </systemPropertyVariables>
         </configuration>
       </plugin>
