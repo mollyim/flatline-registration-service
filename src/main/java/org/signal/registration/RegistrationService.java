@@ -339,9 +339,9 @@ public class RegistrationService {
 
     final RegistrationSession session = sessionRepository.getSession(sessionId);
 
-    // If a connection was interrupted, a caller may repeat a verification request. Check to see if we already have a
-    // known verification code for this session and, if so, check the provided code against that code instead of making
-    // a call upstream.
+    // If a connection was interrupted, a caller may repeat a verification request. If a previous code was already
+    // verified, we can return the existing verified session without making another call to actually check the code
+    // (again).
     if (StringUtils.isNotBlank(session.getVerifiedCode())) {
       return session;
     }
